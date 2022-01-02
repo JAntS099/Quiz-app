@@ -6,11 +6,7 @@ import PHome from './pages/PHome';
 // Is austalia considerd an island or a contenent 
 
 
-
-
-const question = []
-
-const App = () =>{
+const App = () => {
   return (
     <div className="App">
      <PHome />
