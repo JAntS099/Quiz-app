@@ -4,18 +4,14 @@ const AnswerBtn = (props) => {
   return (
     <div
       onClick={(e) => props.onClick && props.onClick(e)}
-      style={{
-        width: "300px",
-        height: "150px",
-        overflowWrap: "break-word",
-        borderRadius: "25px",
-        cursor: props.onClick ? "pointer" : "default",
-      }}
-      className={`${props.bg ?? "bg-secondary"}`}
+      className={`${props.bg ?? "bg-secondary"} btns`}
       data-value={props.answer}
     >
-      <div className="pt-4">
-        <span className={`h4 fw-bold ${props.txtColor ?? "text-white"}`}>
+      <div className="pt-4" data-value={props.answer}>
+        <span
+          className={`h4 fw-bold ${props.txtColor ?? "text-white"}`}
+          data-value={props.answer}
+        >
           {props.answer ?? ""}
         </span>
       </div>

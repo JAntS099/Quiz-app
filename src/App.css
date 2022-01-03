@@ -2,12 +2,26 @@
   text-align: center;
 }
 
+.row {
+  min-height: 20rem;
+}
+
+hr.divider {
+  height: 3px !important;
+}
+
 .questionCard {
-  border-radius: 25px;
-  min-height: 200px;
   overflow-wrap: break-word;
   padding-top: 25px;
   padding-bottom: 25px;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.btns {
+  width: 300px;
+  height: 90px;
+  overflow-wrap: break-word;
+  border-radius: 25px;
+  cursor: pointer;
 }

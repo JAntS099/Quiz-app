@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useFetchCountries } from "../api/countriesApi";
 import { useQuery, gql } from "@apollo/client";
 import AnswerBtn from "../components/answerBtn";
-import Questioner from "../components/questioner";
 import QuestionCard from "../components/QuestionCard";
 import AnswerGrid from "../components/AnswerGrid";
 import { questions } from "../components/questions";
@@ -47,12 +46,21 @@ const PHome = () => {
   return (
     <div className="container mt-5">
       {currentQuestion ? (
-        <div>
-          <QuestionCard question={currentQuestion.question} />
-          <AnswerGrid
-            onClick={handleOnClick}
-            answers={currentQuestion.answers}
-          />
+        <div className="Questioner">
+          <div className="row align-items-end justify-content-center">
+            <div className="col-md-7 questionCard">
+              <QuestionCard question={currentQuestion.question} />
+            </div>
+          </div>
+
+          <hr className="divider" />
+
+          <div className="row align-items-center justify-content-md-center">
+            <AnswerGrid
+              onClick={handleOnClick}
+              answers={currentQuestion.answers}
+            />
+          </div>
         </div>
       ) : (
         <PLeaderBoard
@@ -64,8 +72,3 @@ const PHome = () => {
 };
 
 export default PHome;
-
-// set the correct to TRUE if its true
-// at the end, save the number of correct
-// user can put his name
-// show leaderboard

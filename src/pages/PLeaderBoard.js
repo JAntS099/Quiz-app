@@ -29,31 +29,41 @@ const PLeaderBoard = (props) => {
   };
 
   return (
-    <div className="PLeaderBoard">
+    <div className="PLeaderBoard container mt-5">
       {name !== null ? (
-        <div>
-          <table className="table table-stripped">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Score</th>
-              </tr>
-            </thead>
-            <tbody>
-              {fetchLeaderboardData().map((row, idx) => (
-                <tr key={idx}>
-                  <td>{row.name}</td>
-                  <td>{row.score}</td>
+        <div className="row justify-content-center">
+          <div className="col-md-9 justify-content-center gap-4 mt-5">
+            <h1>SCORE BOARD</h1>
+
+            <table className="table table-bordered table-striped table-lights">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Score</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="d-flex col-12 justify-content-center gap-4">
+              </thead>
+              <tbody>
+                {fetchLeaderboardData().map((row, idx) => (
+                  <tr key={idx}>
+                    <td>{idx + 1}</td>
+                    <td>{row.name}</td>
+                    <td>{row.score}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="d-flex col-md-9 justify-content-center gap-4">
             <button
-              onClick={() => localStorage.clear()}
+              onClick={() => {
+                localStorage.clear();
+                window.location.reload();
+              }}
               className="btn btn-danger"
             >
-              Clear leaderboard
+              Restart
             </button>
 
             <button
@@ -65,27 +75,45 @@ const PLeaderBoard = (props) => {
           </div>
         </div>
       ) : (
-        <div className="form-group">
-          <input
-            ref={inputRef}
-            type="text"
-            placeholder="Fill your name"
-            className="input-group"
-          />
-          <button onClick={savePlayer} className="btn btn-secondary">
-            Submit
-          </button>
+        <div className="row justify-content-center">
+          <div className="col col-md-9 ">
+            <h1>DONE!</h1>
+            <h3>Your score is {props.score}/15</h3>
+          </div>
+          <div className="col col-md-9 ">
+            <div className="form-group">
+              <form class="form-inline">
+                <div class="form-group mx-sm-3 mb-2">
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    class="form-control"
+                    placeholder="Your name"
+                  />
+
+                  <div className="d-flex justify-content-center gap-4 mt-3">
+                    <button
+                      type="button"
+                      onClick={savePlayer}
+                      className="btn btn-primary mb-2"
+                    >
+                      Save your Score
+                    </button>
+                    <button
+                      onClick={() => window.location.reload()}
+                      className="btn btn-warning mb-2"
+                    >
+                      Try again
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       )}
     </div>
   );
 };
-
-{
-  /* <div class="input-group flex-nowrap">
-  <span class="input-group-text" id="addon-wrapping">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-</div> */
-}
 
 export default PLeaderBoard;

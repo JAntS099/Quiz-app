@@ -1,17 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
-import { countriesUrl } from './api/countriesApi';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { countriesUrl } from "./api/countriesApi";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const clientConfig = new ApolloClient({
   uri: countriesUrl,
-  cache: new InMemoryCache()
-})
+  cache: new InMemoryCache(),
+});
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,7 +18,7 @@ ReactDOM.render(
       <App />
     </ApolloProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
