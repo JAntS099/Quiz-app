@@ -56,22 +56,25 @@ const PLeaderBoard = (props) => {
           </div>
 
           <div className="d-flex col-md-9 justify-content-center gap-4">
-            <button
-              onClick={() => {
-                localStorage.clear();
-                window.location.reload();
-              }}
-              className="btn btn-danger"
-            >
-              Restart
-            </button>
-
-            <button
-              onClick={() => window.location.reload()}
-              className="btn btn-success"
-            >
-              Play again
-            </button>
+            <div>
+              <button
+                onClick={() => {
+                  localStorage.clear();
+                  window.location.reload();
+                }}
+                className="btn btn-danger"
+              >
+                Restart
+              </button>
+            </div>
+            <div>
+              <button
+                onClick={() => window.location.reload()}
+                className="btn btn-success"
+              >
+                Play again
+              </button>
+            </div>
           </div>
         </div>
       ) : (
@@ -82,28 +85,28 @@ const PLeaderBoard = (props) => {
           </div>
           <div className="col col-md-9 ">
             <div className="form-group">
-              <form class="form-inline">
-                <div class="form-group mx-sm-3 mb-2">
+              <form className="form-inline">
+                <div className="form-group mx-sm-3 mb-2">
                   <input
                     ref={inputRef}
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Your name"
                   />
 
                   <div className="d-flex justify-content-center gap-4 mt-3">
+                    <button
+                      onClick={() => window.location.reload()}
+                      className="btn btn-warning mb-2"
+                    >
+                      Try again
+                    </button>
                     <button
                       type="button"
                       onClick={savePlayer}
                       className="btn btn-primary mb-2"
                     >
                       Save your Score
-                    </button>
-                    <button
-                      onClick={() => window.location.reload()}
-                      className="btn btn-warning mb-2"
-                    >
-                      Try again
                     </button>
                   </div>
                 </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useFetchCountries } from "../api/countriesApi";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery, gql, empty } from "@apollo/client";
 import AnswerBtn from "../components/answerBtn";
 import QuestionCard from "../components/QuestionCard";
 import AnswerGrid from "../components/AnswerGrid";
