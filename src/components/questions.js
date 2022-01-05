@@ -107,3 +107,44 @@ export const questions = [
     correct: null,
   },
 ];
+
+// const selectedCountry = "";
+
+// const countryCapital = <h1>Name the capital of {selectedCountry}?</h1>;
+// const countryContinent = (
+//   <h1>In which continent is {selectedCountry} locatied?</h1>
+// );
+// const countryCurrency = <h1>What is the currency of {selectedCountry}?</h1>;
+
+// const randomizer = (a, b) => 0.5 - Math.random();
+
+// const questionTypes = [
+//   {
+//     question: countryCapital,
+//     solutions: "1",
+//     answers: ["", "", "", ""],
+//     correct: null,
+//   },
+//   {
+//     question: countryContinent,
+//     solutions: "",
+//     answers: ["", "", "", ""],
+//     correct: null,
+//   },
+//   {
+//     question: countryCurrency,
+//     solutions: "",
+//     answers: ["", "", "", ""],
+//     correct: null,
+//   },
+// ];
+
+// const TheQuestions = useState(questions.sort(randomizer));
+
+// console.log(TheQuestions);
+
+// const questionnaires = {};
+
+// create a component that renders a select input for coutries
+
+// const countries = ["NL", "FR", "ES", "PH", "NO", "BS", "AU", "MY", "PL", "FJ", "NZ", "JP", "IE","AT","PG"];

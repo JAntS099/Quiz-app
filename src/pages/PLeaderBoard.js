@@ -81,7 +81,9 @@ const PLeaderBoard = (props) => {
         <div className="row justify-content-center">
           <div className="col col-md-9 ">
             <h1>DONE!</h1>
-            <h3>Your score is {props.score}/15</h3>
+            <h3>
+              Your score is {props.score}/{props.totalQuestions}
+            </h3>
           </div>
           <div className="col col-md-9 ">
             <div className="form-group">

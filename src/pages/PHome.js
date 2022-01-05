@@ -1,30 +1,38 @@
-import React, { useState } from "react";
-import { useFetchCountries } from "../api/countriesApi";
-import { useQuery, gql, empty } from "@apollo/client";
+import React, { useState, useEffect } from "react";
 import AnswerBtn from "../components/answerBtn";
 import QuestionCard from "../components/QuestionCard";
 import AnswerGrid from "../components/AnswerGrid";
 import { questions } from "../components/questions";
 import PLeaderBoard from "./PLeaderBoard";
-
-const isCorrectAnswer = (solution, givenAnswer) => solution === givenAnswer;
-
-const randomizer = (a, b) => 0.5 - Math.random();
+import {
+  randomizer,
+  countryQuery,
+  mapToQuestionDataType,
+  useFetchData,
+  isCorrectAnswer,
+} from "../util/util";
 
 const PHome = () => {
-  const [questionsState, setQuestionsState] = useState(
-    questions.sort(randomizer)
-  );
-  const [currentQuestion, setCurrentQuestion] = useState(
-    questionsState[0] ?? undefined
-  );
+  const data = useFetchData();
+
+  const [questionsState, setQuestionsState] = useState(null);
+  const [currentQuestion, setCurrentQuestion] = useState(null);
+  useEffect(() => {
+    if (data) {
+      const parseData = mapToQuestionDataType(data)
+        .sort(randomizer)
+        .filter((item, idx) => idx < 20);
+
+      setQuestionsState(parseData);
+      setCurrentQuestion(parseData[0]);
+    }
+  }, [data]);
 
   const handleOnClick = (e) => {
     const givenAnswer = e.target.dataset.value;
-
     setQuestionsState((prev) =>
       prev.map((question) =>
-        question.questionName === currentQuestion.questionName
+        question.question === currentQuestion.question
           ? {
               ...question,
               correct: isCorrectAnswer(currentQuestion.solution, givenAnswer),
@@ -34,8 +42,8 @@ const PHome = () => {
     );
 
     const currentIndex = questionsState
-      .map((item) => item.questionName)
-      .indexOf(currentQuestion.questionName);
+      .map((item) => item.question)
+      .indexOf(currentQuestion.question);
 
     const lastIndex = questionsState.length - 1;
     if (currentIndex <= lastIndex) {
@@ -64,7 +72,12 @@ const PHome = () => {
         </div>
       ) : (
         <PLeaderBoard
-          score={questionsState.filter((question) => question.correct).length}
+          totalQuestions={questionsState && questionsState.length}
+          score={
+            questionsState
+              ? questionsState.filter((question) => question.correct).length
+              : 0
+          }
         />
       )}
     </div>
